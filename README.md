@@ -1,5 +1,6 @@
 # contract-test-env
 web3 boilerplate for quick contract tests
+`$npm install`
 
 ### Adding new contract
 replace contract/token.sol with new contract 
