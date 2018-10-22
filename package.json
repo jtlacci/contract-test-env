@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "node deploy.js",
-    "run": "node index.js"
+    "start": "node index.js"
   },
   "author": "john sterlacci",
   "license": "ISC",

@@ -12,6 +12,8 @@ async function test(){
     let address = String(fs.readFileSync('./address'))
     let contract = await ContractHandler.getContractAt(COMPILED,address)
 
+    // Add web3 calls here 
+
     let result = await contract.methods
     console.log(result)
 
