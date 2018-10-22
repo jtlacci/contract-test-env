@@ -13,14 +13,12 @@ const tokenHandler = () => {
         try{
             let source = fs.readFileSync('./contracts/' + contractFile,'utf8')
             let compiled = solc.compile(source,'1')
-            
             if(compiled.errors){
                 throw compiled.errors
             }
 
             fs.writeFileSync('./build/' + compiledFileName,JSON.stringify(compiled.contracts[contractName]))
-            
-  
+
             return true
         }catch(e){
             
@@ -66,27 +64,20 @@ const tokenHandler = () => {
         
         try{   
             const accounts = await web3.eth.getAccounts()        
-
             let source = JSON.parse(fs.readFileSync('./build/' + compiledFileName))
-            
-
             let data = source.bytecode
             //promisify deployment return receipt if success
             var deployData
-
             if(argsArray){
                 deployData = {
                     data,
-                    argsArray
+                    arguments:argsArray
                 }
             }else{
                 deployData = {
                     data
                 }
             }
-
-
-
             return new Promise(resolve => {
                 getContract(compiledFileName).deploy(
                     deployData
