@@ -38,8 +38,7 @@ const tokenHandler = () => {
             //let abi = source.abi
 
             //if using a .json built by Solc
-            let abi = JSON.parse(source.interface)      
-            console.log(abi)
+            let abi = JSON.parse(source.interface)     
 
             return new web3.eth.Contract(abi)
         }catch(e){
@@ -68,7 +67,7 @@ const tokenHandler = () => {
         try{   
             const accounts = await web3.eth.getAccounts()        
 
-            let source = JSON.parse(fs.readFileSync('./' + compiledFileName))
+            let source = JSON.parse(fs.readFileSync('./build/' + compiledFileName))
             
 
             let data = source.bytecode
@@ -103,6 +102,7 @@ const tokenHandler = () => {
             })
         }catch(e){
             console.log('Failed to deploy contract');
+            console.log(e)
         }
         
     }
