@@ -17,6 +17,10 @@ const tokenHandler = () => {
                 throw compiled.errors
             }
 
+            if(compiled.contracts[contractName] == undefined){
+              throw new Error('Can\'t find compile contract ${contractName} check name matches contract name or for compile errors')
+            }
+
             fs.writeFileSync('./build/' + compiledFileName,JSON.stringify(compiled.contracts[contractName]))
 
             return true
